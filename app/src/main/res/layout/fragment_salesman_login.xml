@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/app_color_first">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <androidx.percentlayout.widget.PercentRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_userCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/app_text_color"
+                    android:textColorHint="@color/app_text_color"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    app:layout_marginLeftPercent="10%"
+                    app:layout_marginRightPercent="10%">
+
+                    <EditText
+                        android:id="@+id/edt_code"
+                        style="@style/base_edittext_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_user_code_32dp"
+                        android:hint="@string/user_code"
+                        android:textColorHint="@color/app_text_color" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/til_userCode"
+                    android:textColorHint="@color/app_text_color"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    app:layout_marginLeftPercent="10%"
+                    app:layout_marginRightPercent="10%"
+                    app:passwordToggleDrawable="@drawable/ic_visible_white_24dp"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/app_text_color">
+
+                    <EditText
+                        android:id="@+id/edt_password"
+                        style="@style/base_edittext_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_user_password_32dp"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:textColorHint="@color/app_text_color" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- <ImageView
+                     android:id="@+id/img_pass_status"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_above="@+id/check_select_browser"
+                     android:layout_alignParentRight="true"
+                     android:layout_marginTop="-24dp"
+                     android:layout_marginBottom="8dp"
+                     android:padding="10dp"
+                     android:src="@drawable/ic_visible_white_24dp"
+                     app:layout_marginLeftPercent="10%"
+                     app:layout_marginRightPercent="10%" />-->
+
+                <CheckBox
+                    android:id="@+id/check_select_browser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/til_password"
+                    android:buttonTint="@color/app_text_color"
+                    android:text="@string/go_on_my_browser"
+                    android:textColor="@color/app_text_color"
+                    app:layout_marginLeftPercent="10%"
+                    app:layout_marginRightPercent="10%"
+                    app:layout_marginTopPercent="5%" />
+
+                <Button
+                    android:id="@+id/btn_login"
+                    style="@style/base_button_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/check_select_browser"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="@string/login"
+                    app:layout_marginLeftPercent="10%"
+                    app:layout_marginRightPercent="10%"
+                    app:layout_marginTopPercent="5%" />
+
+            </androidx.percentlayout.widget.PercentRelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressSalesmanBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="360dp"
+        android:visibility="invisible">
+
+    </ProgressBar>
+
+    <!-- <ImageView
+         android:id="@+id/img_down_arrow"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentTop="true"
+         android:layout_alignParentRight="true"
+         android:padding="10dp"
+         android:src="@drawable/ic_keyboard_arrow_down24dp"
+         app:layout_marginRightPercent="10%" />-->
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

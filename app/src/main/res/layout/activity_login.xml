@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.percentlayout.widget.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/phone_background" />
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient"
+            app:layout_heightPercent="40%">
+
+            <ImageView
+                android:id="@+id/user_profile_photo"
+                android:layout_width="@dimen/imageview_size"
+                android:layout_height="@dimen/imageview_size"
+                android:layout_centerInParent="true"
+                android:elevation="10dp"
+                android:padding="10dp"
+                android:background="@drawable/user_profile_image_background"
+                app:srcCompat="@drawable/logo_otto" />
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <androidx.percentlayout.widget.PercentRelativeLayout
+            android:id="@+id/rl_pagerviews"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:alpha="0"
+            app:layout_heightPercent="60%">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/login_viewpager"
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                app:layout_heightPercent="90%">
+
+            </androidx.viewpager.widget.ViewPager>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/login_tablayout"
+                style="@style/AppTabLayout"
+                android:layout_width="match_parent"
+                android:layout_above="@+id/login_viewpager"
+                app:layout_heightPercent="10%"
+                app:tabTextColor="@color/app_color_first" />
+
+        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_loginbutton"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_color_first"
+            android:gravity="center"
+            app:layout_heightPercent="8%">
+
+            <TextView
+                style="@style/base_textview_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login" />
+        </RelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>

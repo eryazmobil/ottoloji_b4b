@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Ottoloji B4B</string>
+
+    <string name="login">GİRİŞ YAP</string>
+    <string name="current_code">Cari Kodu</string>
+    <string name="user_code">Kullanıcı Kodu</string>
+    <string name="password">Şifre</string>
+    <string name="go_on_my_browser">Kendi tarayıcımdan devam etmek istiyorum.</string>
+    <string name="please_wait">Lütfen Bekleyiniz..</string>
+    <string name="please_check_your_connection">Lütfen İnternet Bağlantınızı Kontrol Ediniz.</string>
+    <string name="please_fill_all_input">Lütfen Tüm Bilgilerinizi Eksiksiz Giriniz.</string>
+    <string name="trouble_while_login"> Giriş İşlemi Sırasında bir Sorun ile karşılaşıldı.</string>
+    <string name="r_u_sure_to_exit"> Uygulamadan Çıkış Yapmak İstediğinizden Emin Misiniz?.</string>
+    <string name="cancel"> İPTAL!</string>
+    <string name="accept"> ONAYLA</string>
+    <string name="warning"> UYARI!!!.</string>
+    <string name="atttention"> DİKKAT!!!.</string>
+    <string name="r_u_sure_to_exit_B2B"> B2B sisteminden çıkış yapmak istediğinize emin misiniz ?.</string>
+    <string name="licence_problem"> Lisans alma işlemi sırasında bir sorun ile karşılaşıldı.</string>
+    <string name="yes">EVET</string>
+    <string name="no">HAYIR</string>
+
+</resources>
