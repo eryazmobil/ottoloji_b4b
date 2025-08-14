@@ -39,14 +39,14 @@ class LoginActivity : BaseActivity() {
     var position = 0
     var licanceCheckCall: Call<LicenceCheckResponse>? = null
     var getSessionResponseCall: Call<GetSessionResponse>? = null
-    private lateinit var binding : ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        
+
         binding.rlLoginbutton.setOnClickListener {
 
             startSlideUpAnimation(binding.rlPagerviews)
@@ -76,8 +76,12 @@ class LoginActivity : BaseActivity() {
 
     private val pager: Unit
         get() {
-            binding.loginTablayout.addTab(binding.loginTablayout.newTab().setText(TabLayoutName.first))
-            binding.loginTablayout.addTab(binding.loginTablayout.newTab().setText(TabLayoutName.second))
+            binding.loginTablayout.addTab(
+                binding.loginTablayout.newTab().setText(TabLayoutName.first)
+            )
+            binding.loginTablayout.addTab(
+                binding.loginTablayout.newTab().setText(TabLayoutName.second)
+            )
             binding.loginTablayout.tabGravity = TabLayout.GRAVITY_CENTER
             val pagerLoginAdapter = context?.let {
                 PagerLoginAdapter(
@@ -118,7 +122,8 @@ class LoginActivity : BaseActivity() {
             AlertDialog.Builder(it)
                 .setNegativeButton(resources.getString(R.string.cancel))
                 { dialog, which -> dialog.dismiss() }
-                .setPositiveButton(resources.getString(R.string.accept)
+                .setPositiveButton(
+                    resources.getString(R.string.accept)
                 ) { dialog, which -> finish() }
                 .setCancelable(true)
                 .setIcon(android.R.drawable.ic_dialog_alert)
@@ -156,18 +161,19 @@ class LoginActivity : BaseActivity() {
                 licanceCheckCall = null
                 try {
                     if (Util.checkResponseValue(response)) {
-                        if (response.body()!!.status == true) {
-                            getSession(customerId, userType, deviceType, userId,)
+                        if (response.body()?.status == true) {
+                            getSession(customerId, userType, deviceType, userId)
                         } else {
                             Toast.makeText(
-                                context,resources.getString(R.string.licence_problem),
+                                context,
+                                response.body()?.message ?: "",
                                 Toast.LENGTH_SHORT
                             ).show()
 
                         }
                     } else {
                         Toast.makeText(
-                            context,resources.getString(R.string.licence_problem),
+                            context, resources.getString(R.string.licence_problem),
                             Toast.LENGTH_SHORT
                         ).show()
 
@@ -225,7 +231,7 @@ class LoginActivity : BaseActivity() {
                         }
                     } else {
                         Toast.makeText(
-                            context,resources.getString(R.string.trouble_while_login),
+                            context, resources.getString(R.string.trouble_while_login),
                             Toast.LENGTH_SHORT
                         ).show()
 

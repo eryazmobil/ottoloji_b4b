@@ -67,8 +67,6 @@ class CustomerFragment : Fragment(), IOnBackPressed {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnLogin.setOnClickListener {
-            
-            viewVisibility(false)
 
             if (context?.let { Util.checkInternetConnection(it) } == true) {
                 if (Util.isNotEditTextEmpty(binding.edtUserCode.text.toString())
@@ -82,7 +80,6 @@ class CustomerFragment : Fragment(), IOnBackPressed {
                         resources.getString(R.string.please_fill_all_input),
                         Toast.LENGTH_SHORT
                     ).show()
-                    viewVisibility(true)
                 }
             } else {
                 Toast.makeText(
@@ -90,7 +87,6 @@ class CustomerFragment : Fragment(), IOnBackPressed {
                     resources.getString(R.string.please_check_your_connection),
                     Toast.LENGTH_SHORT
                 ).show()
-                viewVisibility(true)
             }
         }
         binding.checkSelectBrowser.setOnCheckedChangeListener { checkSelectBrowser, isChecked ->
@@ -109,7 +105,7 @@ class CustomerFragment : Fragment(), IOnBackPressed {
         return true
     }
 
-    fun getCustomerLogin(code: String, password: String, userCode: String, ) {
+    fun getCustomerLogin(code: String, password: String, userCode: String) {
 
         if (custCall != null && !custCall!!.isCanceled) {
             try {
@@ -123,11 +119,14 @@ class CustomerFragment : Fragment(), IOnBackPressed {
 
         custCall = customerLoginApi.getCustomerLoginService(
             "GetCustomerLogin?pCode=$code&pUserCode=$userCode&pPassword=$password&pImei=" + context?.let {
-                Util.getImei(it) } + "&pUniqId=" + Constant.DECODE)
+                Util.getImei(it)
+            } + "&pUniqId=" + Constant.DECODE)
 
         custCall!!.enqueue(object : Callback<CustomerLoginResponse> {
-            override fun onResponse(mcall: Call<CustomerLoginResponse>, response: Response<CustomerLoginResponse>)
-            {
+            override fun onResponse(
+                mcall: Call<CustomerLoginResponse>,
+                response: Response<CustomerLoginResponse>
+            ) {
                 custCall = null
                 try {
                     if (Util.checkResponseValue(response)) {
@@ -155,8 +154,11 @@ class CustomerFragment : Fragment(), IOnBackPressed {
                                 }
                             }
                     } else {
-                        Toast.makeText(context,resources.getString(R.string.trouble_while_login), Toast.LENGTH_SHORT).show()
-                       viewVisibility(true)
+                        Toast.makeText(
+                            context,
+                            resources.getString(R.string.trouble_while_login),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 } catch (ex: NullPointerException) {
 
@@ -165,12 +167,8 @@ class CustomerFragment : Fragment(), IOnBackPressed {
             }
 
             override fun onFailure(mcall: Call<CustomerLoginResponse>, t: Throwable) {
-                if (custCall!!.isCanceled) {
-                    //Log.e(TAG, "request was cancelled");
-                } else {
-                    //Log.e(TAG, "other larger issue, i.e. no network connection?");
-                }
                 custCall = null
+                Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
                 t.printStackTrace()
 
             }
@@ -188,28 +186,6 @@ class CustomerFragment : Fragment(), IOnBackPressed {
                 )
             }
         }.start()
-    }
-
-    private fun viewVisibility(isVisible:Boolean){
-
-        if (!isVisible) {
-            binding.edtCode.visibility = View.INVISIBLE
-            binding.btnLogin.visibility = View.INVISIBLE
-            binding.edtPassword.visibility = View.INVISIBLE
-            binding.checkSelectBrowser.visibility = View.INVISIBLE
-            binding.tilPassword.visibility = View.INVISIBLE
-            binding.tilUserCode.visibility = View.INVISIBLE
-            binding.progressCustomerBar.visibility=View.VISIBLE
-        }
-        else{
-            binding.edtCode.visibility = View.VISIBLE
-            binding.btnLogin.visibility = View.VISIBLE
-            binding.edtPassword.visibility = View.VISIBLE
-            binding.checkSelectBrowser.visibility = View.VISIBLE
-            binding.tilPassword.visibility = View.VISIBLE
-            binding.tilUserCode.visibility = View.VISIBLE
-            binding.progressCustomerBar.visibility=View.INVISIBLE
-        }
     }
 }
 

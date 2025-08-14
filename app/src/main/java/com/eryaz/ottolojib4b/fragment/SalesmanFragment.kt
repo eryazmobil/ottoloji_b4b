@@ -62,8 +62,6 @@ class SalesmanFragment : Fragment(), IOnBackPressed {
 
         binding.btnLogin.setOnClickListener {
 
-            viewVisibility(false)
-
             if (context?.let { Util.checkInternetConnection(it) } == true) {
                 if (Util.isNotEditTextEmpty(binding.edtCode.text.toString()) && Util.isNotEditTextEmpty(binding.edtPassword.text.toString())) {
                     login()
@@ -74,7 +72,6 @@ class SalesmanFragment : Fragment(), IOnBackPressed {
                         resources.getString(R.string.please_fill_all_input),
                         Toast.LENGTH_SHORT
                     ).show()
-                    viewVisibility(true)
                 }
             } else {
                 Toast.makeText(
@@ -82,8 +79,6 @@ class SalesmanFragment : Fragment(), IOnBackPressed {
                     resources.getString(R.string.please_check_your_connection),
                     Toast.LENGTH_SHORT
                 ).show()
-
-                viewVisibility(true)
 
             }
         }
@@ -132,7 +127,6 @@ class SalesmanFragment : Fragment(), IOnBackPressed {
                             context,getString(R.string.trouble_while_login),
                             Toast.LENGTH_SHORT
                         ).show()
-                        viewVisibility(true)
                     }
                 } catch (ex: NullPointerException) {
 
@@ -160,29 +154,6 @@ class SalesmanFragment : Fragment(), IOnBackPressed {
         }.start()
     }
 
-
-    private fun viewVisibility(isVisible:Boolean){
-
-        if (!isVisible) {
-            binding.edtCode.visibility = View.INVISIBLE
-            binding.btnLogin.visibility = View.INVISIBLE
-            binding.edtPassword.visibility = View.INVISIBLE
-            binding.checkSelectBrowser.visibility = View.INVISIBLE
-            binding.tilPassword.visibility = View.INVISIBLE
-            binding.tilUserCode.visibility = View.INVISIBLE
-            binding.progressSalesmanBar.visibility=View.VISIBLE
-        }
-        else{
-            binding.edtCode.visibility = View.VISIBLE
-            binding.btnLogin.visibility = View.VISIBLE
-            binding.edtPassword.visibility = View.VISIBLE
-            binding.checkSelectBrowser.visibility = View.VISIBLE
-            binding.tilPassword.visibility = View.VISIBLE
-            binding.tilUserCode.visibility = View.VISIBLE
-            binding.progressSalesmanBar.visibility=View.INVISIBLE
-
-        }
-    }
 }
 
 
