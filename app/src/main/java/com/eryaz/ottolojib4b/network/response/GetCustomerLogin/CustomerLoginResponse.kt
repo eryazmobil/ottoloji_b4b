@@ -154,7 +154,7 @@ data class CustomerLoginResponse (
 
     @SerializedName("RiskLimit")
     @Expose
-    var riskLimit: Int? = null,
+    var riskLimit: Double? = null,
 
     @SerializedName("CreditLimit")
     @Expose
